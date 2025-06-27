@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For My Love ❤️</title>
+  <style>
+    
+  
+    * {
+      box-sizing: border-box;
+    }
+    
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #0c0a1c, #1a1725, #251f3f, #42425d);
+      color: #dbc3cf;
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+  
+    .container {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgb(219 195 207 / 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      margin-bottom: 60px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 900;
+      font-size: 3rem;
+      letter-spacing: 4px;
+      margin-bottom: 0.3em;
+      color: #f0d9e6;
+      text-shadow: 0 0 10px #ff99cc;
+    }
+
+    .message p {
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: #f3d7e6cc;
+      margin-bottom: 1.5em;
+      font-style: italic;
+      letter-spacing: 0.03em;
+      user-select: none;
+      text-shadow: 0 0 5px #ffb6c1aa;
+    }
+    
+    #randomMessage {
+      font-style: italic;
+      font-size: 1.4rem;
+      text-align: center;
+      color: #ffbfd9;
+      margin-bottom: 3rem;
+      text-shadow: 0 0 8px #ffbfd9aa;
+      animation: pulse 3s infinite ease-in-out;
+      user-select: none;
+    }
+
+    .flex-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .flex-row img {
+      width: 280px;
+      max-width: 100%;
+      border-radius: 20px;
+      border: 4px solid #fdc3de;
+      box-shadow: 0 10px 20px rgb(255 159 204 / 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .flex-row img:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 15px 30px rgb(255 159 204 / 0.5);
+    }
+
+    .flex-row p {
+      max-width: 350px;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: #ffd3e5;
+      user-select: none;
+      letter-spacing: 0.02em;
+      text-shadow: 0 0 6px #ffb0ce;
+    }
+
+    .flex-row p::before {
+      content: "➡️";
+      margin-right: 10px;
+      font-size: 1.4rem;
+      vertical-align: middle;
+    }
+
+    .flex-row.reverse {
+  flex-direction: row-reverse;
+    }
+
+    .flex-row.reverse p::before {
+      content: "⬅️";
+    }
+
+    .thank-you {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px 30px;
+      border-radius: 20px;
+      max-width: 600px;
+      font-size: 1.3rem;
+      color: #ffc6db;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 0 15px rgb(255 198 219 / 0.7);
+      user-select: none;
+      animation: fadeIn 2s ease forwards;
+      margin: 0 auto;
+      display: block;
+    }
+
+    @media (max-width: 700px) {
+      .flex-row {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .flex-row.reverse {
+        flex-direction: column;
+      }
+
+      .flex-row p {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .flex-row p::before {
+        display: none;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 8px #ffbfd9aa;
+      }
+
+      50% {
+        opacity: 0.7;
+        text-shadow: 0 0 15px #ffbfd9eee;
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+
+    
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 3rem;
+      padding: 0 10px;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 3px solid #fdc3de;
+      box-shadow: 0 5px 15px rgba(255, 192, 203, 0.3);
+      user-select: none;
+    }
+
+    .photo-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(255, 192, 203, 0.5);
+    }
+
+    .video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 3rem;
+  max-width: 900px;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.video-thumb {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 15px;
+  cursor: pointer;
+  border: 3px solid #fdc3de;
+  box-shadow: 0 5px 15px rgba(255, 192, 203, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(255, 192, 203, 0.5);
+}
+
+    
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      user-select: none;
+    }
+    
+    /* 🌟 Starry background */
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      overflow: hidden;
+      
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+    }
+ 
+  </style>
+</head>
+
+<body>
+  
+<audio id="bg-music" src="Music/Paninindigan kita.mp3" type="audio/mpeg" preload="auto" loop></audio>
+
+<button onclick="document.getElementById('bg-music').play()">🎶 Play Music</button>
+
+  
+  <div class="stars" id="stars"></div>
+  
+  <div class="container">
+    <h1>Hi Love! 💌</h1>
+    <div class="message">
+      <p>I just wanted to say Happy Monthsary!!! Scroll down to see some of our cutest photos!</p>
+    </div>
+    <p id="randomMessage"></p>
+
+    <div class="flex-row">
+      <p>Your photos first :3! hehe</p>
+      <img src="Images/bang.jpg" alt="Us smiling together" onclick="openModal(this.src, this.alt)">
+    </div>
+
+    <div class="flex-row">
+      <img src="Images/Cuteu.jpg" alt="Us being cute together" onclick="openModal(this.src, this.alt)">
+      <p>This photo makes my heart smile every time. 💖</p>
+    </div>
+
+    <div class="flex-row">
+      <p>ambott nalang kagigil :#</p>
+      <img src="Images/78cccce9-ee5e-43e8-ae2f-2671a9377152.jpg" alt="Giggle pic" onclick="openModal(this.src, this.alt)">
+    </div>
+
+    <div class="flex-row">
+      <img src="Images/you.jpeg.jpg" alt="Cute nami" onclick="openModal(this.src, this.alt)">
+      <p>This one is cute because nami's in it. 💖</p>
+    </div>
+
+    <div class="flex-row">
+      <p>HAHAHAHA parang tanga to!</p>
+      <img src="Images/gun.jpg" alt="Silly us" onclick="openModal(this.src, this.alt)">
+    </div>
+
+    <div class="flex-row">
+      <img src="Images/5fefeeff-2b61-474e-8d35-6f31de920583.jpg" alt="Us smiling together" onclick="openModal(this.src, this.alt)">
+        <p>Kapoy kay ka ani tung naa sila mama luv uu  </p>
+    </div>
+    
+    <div class="flex-row">
+      <p> Ganahan ko anii hehe</p>
+      <img src="Images/67db370f-14f3-4b0c-82d2-ffa1d5223002.jpg" alt="Us being cute together" onclick="openModal(this.src, this.alt)">
+    </div>
+    
+    <div class="flex-row">
+      <img src="Images/6017b253-9044-4b0e-9844-73d55976ffa8.jpg" alt="Us smiling together" onclick="openModal(this.src, this.alt)">
+         <p>Namiiiii :,( miss you both!</p>
+    </div>
+    
+    <div class="flex-row">
+      <p>Pangitan ka pero gwapahan kaykooo #gilumayguroo 😝 </p>
+      <img src="Images/209176f2-ad42-4ccf-ba86-784608b6cfa4.jpg" alt="Us being cute together" onclick="openModal(this.src, this.alt)">
+    </div>
+    
+     <div class="flex-row">
+      <img src="Images/820397a7-3110-4033-a7e6-d8f57ecd414f.jpg" alt="Us being cute together" onclick="openModal(this.src, this.alt)">
+      <p>For now kani last nako matapad ka nahubog :,( , tas bag o ra suka yuckss 🤣</p>
+    </div>
+    
+    <div class="flex-row">
+      <p>Grabi dai grabi gyud na na tutok mura man ug nag sisi!😠</p>
+      <img src="Images/c3fecee8-9e38-4b0e-a546-51ff0798f9bf.jpg" alt="Us being cute together" onclick="openModal(this.src, this.alt)">
+    </div>
+    
+    <div class="flex-row">
+      <img src="Images/faf8c793-0584-4851-8586-6021bcb1aa9e.jpg" alt="Us being cute together" onclick="openModal(this.src, this.alt)">
+      <p>Can't wait to see this view again!!! to more ramen dates with youuuu 😘</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    <div class="message thank-you">
+      <p>
+        So hi love! For our Monthsary unta ni pero I think mas better if karon nalang, I just want to say how grateful I am, I know
+        dili kaayo nako ni mapakita saimo, And kung unsa man akoang mga naagian sa life na kauban ta dili koto kaya kung wala ka, 
+        I will forever be grateful that I met you, And Thank you love for everything sa pag sabot, sa pag stay, sa pag alalay sa akoa pirme.
+        Thank you kaayo ha! I'm not perfect gyud samokan kaayo ko in a bad way, pero naa gihapon ka, Iloveyou so much sobra tika ka love,
+        I will do better gyud! mangayo lang kog salig usab. ILOVEYOU 
+        
+    
+    
+    
+    </div>
+   
+  </div>
+
+  
+  <!-- ✅ Photo Grid Section -->
+  <div class="photo-grid">
+    <img src="Images/4eccfeb1-95cb-440c-9e8e-3bef11df094e.jpg"   alt="Us Together" onclick="openModal(this.src, this.alt)">
+    <img src="Images/05ffc366-7505-469d-8cff-e3ac3b110246.jpg" alt="Cute Us" onclick="openModal(this.src, this.alt)">
+    <img src="Images/8e3189e7-cbff-44fc-a4ce-988b4c41402e.jpg" alt="Photo 4" onclick="openModal(this.src, this.alt)">
+    <img src="Images/3ad9764a-cb68-4d72-b83b-3299374e95a9.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/6e006346-f068-4303-8eb4-7b63c5e14a46.jpg" alt="Photo 5" onclick="openModal(this.src, this.alt)">
+    <img src="Images/ga.jpg" alt="Photo 5" onclick="openModal(this.src, this.alt)">
+    <img src="Images/3b9f19e9-7ee8-4e31-ada7-e079475a50ff.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/bd085332-a5ae-4c42-9700-274c2a3600c1.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/c99bd1ec-1d28-4555-99d3-c93cb753351c.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/cd520c98-dd7d-4313-8b7a-f3372176b9ad.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/ead5ce47-fdaa-4204-bf16-68ceba49fee6.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/cfc42b22-4cda-475e-96e0-05bafb2dc387.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/cc1ac3ad-322d-4e8a-a8e5-de5d960406b4.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/e1a9b755-5924-45f3-9b15-f1c211a492ec.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/h.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/26ccd3d4-5b9b-4d05-acfb-b220e698ac46.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/54f0d042-ae9a-42d2-b801-f7fc917376c5.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/718ddac0-c0eb-4438-81ab-8363d5df547a.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/8567a4d3-b47c-439c-99cf-18640981c9e1.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/a7e0f72d-a221-4c2c-90f5-4eaa0233df6f.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/33067b4d-49b4-4732-8640-d239935a6510.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/b08d324c-7d06-4a80-9923-25eece60a9e5.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/e.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/ed303e98-7bd3-42d7-b116-7c9266b809ab.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/f53074cf-c33e-4cf0-9e7c-db7c89f36f13.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/fb1ea7e5-f281-4111-ae17-e6e6e4c6b000.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/ff6d88d2-9a86-4e42-b7e6-9c67f2d8f84a.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/669ecf81-277c-44fc-978b-78fd2c926bf3.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/906cbb27-c309-4397-bf7a-0cca2a3a12da.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    <img src="Images/a5c5d357-208d-4fcc-949c-efaf35bf5d45.jpg" alt="Photo 3" onclick="openModal(this.src, this.alt)">
+    
+    
+    
+  </div>
+
+  
+  
+  <div class="message">
+      <p>-----------------------------------------------------------------------</p>
+    <p>VIDEOS AHEADD!!!</p>
+    </div>
+  
+  
+  <!-- ✅ Video Grid Section -->
+<div class="video-grid">
+  <video class="video-thumb" src="Videos/e05de229-f62e-41b7-b3f7-723d66d151df.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/f0551b43-73f0-49e0-9de9-139a8d5f5538.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/02df48b5-68bb-47a6-a94f-e714c4b11cd1.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/c25fcda5-d786-400f-82ef-8d492fd077a4.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/bb037e2f-58a0-412e-845f-e4f9de2b592a.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/349e4103-386d-436e-bbcf-cb8efedd86e8.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/18c585be-a380-4553-b81b-49f71c935f09.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/9d54b65b-565f-45c9-9a34-0ea4bae31205.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/4fe07156-fc37-442f-a4ca-dd4fc86d8837.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/f0551b43-73f0-49e0-9de9-139a8d5f5538.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/0b920a39-959a-4143-8859-8388c1a6d9d7.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/1f1792f6-d81b-44d3-a926-9027406bd19e.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/2d77c394-d1b4-4d68-82a3-78a80d82ab8f.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/4e63e72c-093f-48e4-b147-469c2ca13748.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/e07566b6-36f8-434b-ac89-d1c7e6705fd7.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/108802b2-977c-44c0-9c37-f4c362ec25a6.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/81604a6d-f25e-4946-b6d5-3a36608406c5.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/aed4f4f7-5759-4c5e-9ec5-45e57afc9ade.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a8cfc1b1-be11-4475-90ed-c7e8c8b31a59.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a88ae36a-e770-4950-b10f-c5d8661ef5fe.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/f4ecae21-2e9c-403c-868f-90a365b419d2.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/efd12915-d589-4302-b001-936f8b350062.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/0ae38f1e-97a8-44d6-8a7e-1e88d0b76660.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/1e7a2e6c-a50b-4534-a258-67a6de67654b.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/5b8f10cc-bfc6-4f1d-9cd2-53c4f386e28b.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/7e42e052-084a-470e-a15c-df9a990dde05.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/27e1034e-3ae0-416f-a3f0-6e7029fbde40.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/54a774d8-3fae-4b10-8d62-cfe9bffde8d4.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/139e4f43-48bf-4731-bd3c-084ef14e29fe.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/799a4b1d-46fb-4df5-a4c5-d8f5a7410fb0.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/819e8021-9b66-4723-b818-b3b89fb8de8a.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/108802b2-977c-44c0-9c37-f4c362ec25a6 (1).mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/a6bf52a9-7b37-40cf-9c61-a45c090eaadd.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/c9d1b04b-3d20-44ca-b2bb-209d0b228aef.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/d2b0edfd-52db-4346-9758-5b9bbfff8160 (1).mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/e691fe7d-616c-452a-93ad-0b876c3461d7.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/New folder/fc776dad-32b9-48c5-bc4c-d765dc0bb853.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/00b8a41e-1b03-400e-bec5-7ab7faeeffec.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/0c1bdb5c-8b52-4870-931b-77c1eaa3841d.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/0fd939c4-14cb-4777-8c00-be954af4d5d1.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/1fa0cfd3-bd88-4506-b824-d7da07957a9a.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/5c002d1a-9c0d-4c5e-b169-9ccc9da4db36.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/6de5a5ee-277f-429a-95b2-56db8b65eeac.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/95c63518-f389-4eb0-8ad1-ec5aaff44adb.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/92cf6a77-2e4e-4502-9201-3e68eab1c1f6.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/99a125dc-f68b-4f2b-b74b-e70bfbf58246.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/117b1e4f-0689-4380-a3ee-e93fbaf364fb.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/406b11e8-d2c7-4a84-b340-bf92abffa710.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/693ae7f7-7aa1-43a7-a913-5d6866bcf5e5.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/7997e999-4e2a-4a39-b850-a6bcd9ae5fdf.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/a95380d7-8aa5-41b4-bd05-9b84720c8fff.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/c0dc166c-5b6e-4ed8-8e6b-3c260f407f96.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/dae49189-9879-4947-a77a-f60c01ffae4d.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/ded3c781-1928-4c3f-bdf5-b9aa2d0304c2.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/e7216684-2593-4901-9133-97aa3eae7321.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/72905ac3-299d-4a3b-aa6c-e6ffdbc12cd8.mp4" muted loop playsinline></video>
+  <video class="video-thumb" src="Videos/a/722527b8-867d-429a-af63-64f777e21e61.mp4" muted loop playsinline></video>
+  i
+</div>
+
+  
+  
+  
+  <!-- ✅ Lightbox Modal -->
+  <div id="lightbox" class="lightbox" onclick="closeModal()" aria-hidden="true">
+    <img id="lightbox-img" src=" " alt="">
+  </div>
+
+  <script>
+    const messages = [
+      "Thank you Love! 🥰",
+      "You are my favorite person. 💕",
+      "We can do this! 😘",
+      "My memories with you are topnotch. 🌸",
+      "Imissyouuu 😭",
+      "Iloveyouuu 🫶",
+    ];
+    const randomMessageElem = document.getElementById("randomMessage");
+
+    function showRandomMessage() {
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      randomMessageElem.innerText = msg;
+    }
+
+    showRandomMessage();
+    setInterval(() => {
+      randomMessageElem.style.opacity = 0;
+      setTimeout(() => {
+        showRandomMessage();
+        randomMessageElem.style.opacity = 1;
+      }, 400);
+    }, 8000);
+
+    function openModal(imageSrc, altText = '') {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = imageSrc;
+      lightboxImg.alt = altText;
+      lightbox.style.display = 'flex';
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightbox.style.display = 'none';
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+    }
+  </script>
+  
+  <script>
+  document.querySelectorAll('.video-thumb').forEach(video => {
+    // Hover behavior
+    video.addEventListener('mouseenter', () => {
+      video.play();
+    });
+
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+
+    // Tap / click to open modal
+    video.addEventListener('click', () => {
+      openVideoModal(video.src);
+    });
+  });
+
+  function openVideoModal(videoSrc) {
+    const lightbox = document.getElementById('lightbox');
+    const oldContent = document.getElementById('lightbox-img');
+    const newVideo = document.createElement('video');
+
+    newVideo.src = videoSrc;
+    newVideo.controls = true;
+    newVideo.autoplay = true;
+    newVideo.loop = true;
+    newVideo.style.maxWidth = '90%';
+    newVideo.style.maxHeight = '90%';
+    newVideo.style.borderRadius = '12px';
+    newVideo.id = 'lightbox-img';
+
+    lightbox.innerHTML = '';
+    lightbox.appendChild(newVideo);
+    lightbox.style.display = 'flex';
+    lightbox.setAttribute('aria-hidden', 'false');
+  }
+
+  // ✅ Update closeModal to reset content back to default image
+  function closeModal() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+    lightbox.setAttribute('aria-hidden', 'true');
+
+    const resetImg = document.createElement('img');
+    resetImg.id = 'lightbox-img';
+    resetImg.src = '';
+    resetImg.alt = '';
+    lightbox.innerHTML = '';
+    lightbox.appendChild(resetImg);
+  }
+</script>
+
+  
+  <script>
+  const starContainer = document.getElementById('stars');
+  const numStars = 80; // adjust for more or fewer stars
+
+  for (let i = 0; i < numStars; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.top = `${Math.random() * 100}vh`;
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.animationDelay = `${Math.random() * 5}s`;
+    starContainer.appendChild(star);
+  }
+</script>
+
+
+  
+</body>
+</html>
